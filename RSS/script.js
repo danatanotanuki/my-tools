@@ -61,22 +61,38 @@ convertButton.addEventListener('click', () => {
     }
 
     // 4. 整形したコードを出力エリアに表示
-    outputCode.value = `// --- ここから下をコピーして dataStore に貼り付け ---
-${generatedCode.join('')}`;
+    outputCode.value = `${generatedCode.join('')}`;
 });
 
 
-// 「結果をコピー」ボタンの処理（変更なし）
+// 「結果をコピー」ボタンの処理 (アラートの代わりにボタンの表示を変える)
 copyButton.addEventListener('click', () => {
+    // 出力エリアが空の場合は何もしない
     if (!outputCode.value) {
-        alert('先に変換を実行してください。');
+        // 必要ならここにエラーメッセージのアラートを追加しても良い
+        // alert('先に変換を実行してください。');
         return;
     }
+
     navigator.clipboard.writeText(outputCode.value)
         .then(() => {
-            alert('クリップボードにコピーしました！');
+            // --- ここからがフィードバックの処理 ---
+
+            // 1. 元のボタンのテキストを覚えておく
+            const originalText = copyButton.textContent;
+            
+            // 2. ボタンのテキストと状態を変更
+            copyButton.textContent = 'コピー完了！';
+            copyButton.disabled = true; // ボタンを一時的に押せなくする
+
+            // 3. 1.5秒後に元の状態に戻す
+            setTimeout(() => {
+                copyButton.textContent = originalText;
+                copyButton.disabled = false;
+            }, 1500); // 1500ミリ秒 = 1.5秒
         })
         .catch(err => {
+            // コピーに失敗した場合のアラートは残しておく
             alert('コピーに失敗しました。');
             console.error('Copy failed: ', err);
         });
