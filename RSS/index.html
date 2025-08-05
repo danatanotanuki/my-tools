@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSS整形ツール</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>RSS整形ツール for クイックコピー</h1>
+    <p>下にnoteのRSSフィードを貼り付けて、「変換」ボタンを押してください。</p>
+
+    <div class="container">
+        <div class="area">
+            <h2>1. RSSデータを貼り付け</h2>
+            <textarea id="rss-input" placeholder="ここにRSSのテキストを貼り付け..."></textarea>
+        </div>
+
+        <div class="controls">
+            <button id="convert-button">変換実行 →</button>
+        </div>
+
+        <div class="area">
+            <h2>2. 生成されたコード</h2>
+            <textarea id="output-code" readonly placeholder="ここに整形後のコードが出力されます。"></textarea>
+            <button id="copy-button">結果をコピー</button>
+        </div>
+    </div>
+    
+    <hr>
+    <a href="../index.html">トップページに戻る</a>
+
+    <script src="script.js"></script>
+</body>
+</html>
