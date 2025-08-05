@@ -6,70 +6,69 @@ const copyButton = document.getElementById('copy-button');
 
 // 「変換実行」ボタンがクリックされたときの処理
 convertButton.addEventListener('click', () => {
-    // 1. 入力されたRSSテキストを取得
     const rssText = rssInput.value;
     if (!rssText.trim()) {
         alert('RSSデータを入力してください。');
         return;
     }
 
-    // 2. DOMParserを使ってXML文字列を解析
-    const parser = new DOMParser();
-    const xmlDoc = parser.parseFromString(rssText, "application/xml");
+    // 1. 正規表現で、<item> と </item> で囲まれた部分をすべて探し出す
+    const itemRegex = /<item>([\s\S]*?)<\/item>/g;
+    const items = rssText.match(itemRegex);
 
-    // 解析エラーがないかチェック
-    const parseError = xmlDoc.querySelector("parsererror");
-    if (parseError) {
-        alert("RSSデータの解析に失敗しました。貼り付けた内容を確認してください。");
-        console.error(parseError);
+    if (!items) {
+        alert('RSSデータ内に <item> が見つかりませんでした。');
         return;
     }
 
-    // 3. 全ての <item> タグを取得
-    const items = xmlDoc.querySelectorAll("item");
-    if (items.length === 0) {
-        alert('RSS内に <item> が見つかりませんでした。');
-        return;
-    }
-
-    // 4. 各itemから情報を抽出し、指定の形式に整形
+    // 2. 抽出した各itemから、さらに情報を抜き出す
     let generatedCode = [];
-    const baseId = 4; // あなたの例に合わせてIDの開始番号を4に設定
+    const baseId = 4; // IDの開始番号
 
-    items.forEach((item, index) => {
-        // 各要素からテキスト内容を取得
-        const fullTitle = item.querySelector("title").textContent;
-        const url = item.querySelector("link").textContent;
-        const pubDate = item.querySelector("pubDate").textContent;
+    items.forEach((itemText, index) => {
+        // titleを探すための正規表現
+        const titleRegex = /<title>([\s\S]*?)<\/title>/;
+        // linkを探すための正規表現
+        const linkRegex = /<link>([\s\S]*?)<\/link>/;
 
-        // タイトルを「｜」で分割して、メインタイトル部分だけを抽出
-        // 例: "はかる｜【狸の話】" -> "はかる"
-        const simplifiedTitle = fullTitle.split('｜')[0].trim();
+        // 正規表現を使って、実際に文字列を探す
+        const titleMatch = itemText.match(titleRegex);
+        const linkMatch = itemText.match(linkRegex);
 
-        // 指定された形式のオブジェクト文字列を生成
-        const codeObject = `
+        // titleとlinkの両方が見つかった場合のみ処理する
+        if (titleMatch && linkMatch) {
+            // マッチした部分の[1]番目（カッコの中身）が欲しい情報
+            const fullTitle = titleMatch[1].trim();
+            const url = linkMatch[1].trim();
+
+            // 3. 情報を元に、指定の形式のコードを組み立てる
+            const simplifiedTitle = fullTitle.split('｜')[0].trim();
+            const codeObject = `
     {
         id: ${baseId + index},
         title: "${simplifiedTitle}",
-        description: "", // descriptionは空欄
+        description: "",
         text: "### 🔻${fullTitle}",
         url: "${url}"
-        // 抽出した投稿時間: ${pubDate}
     },`;
-        
-        generatedCode.push(codeObject);
+            generatedCode.push(codeObject);
+        }
     });
 
-    // 5. 整形したコードを出力エリアに表示
-    // 最後のカンマを削除し、配列の括弧で囲む
+    if (generatedCode.length === 0) {
+        alert('itemの中からtitleとlinkを抽出できませんでした。');
+        return;
+    }
+
+    // 4. 整形したコードを出力エリアに表示
     outputCode.value = `// --- ここから下をコピーして dataStore に貼り付け ---
-[
-${generatedCode.join('').slice(0, -1)}
-]`;
+${generatedCode.join('')}`;
+    // 最後のカンマを削除する処理をシンプルにしました
+    outputCode.value = outputCode.value.trim().slice(0, -1);
 });
 
 
-// 「結果をコピー」ボタンがクリックされたときの処理
+// 「結果をコピー」ボタンの処理（変更なし）
 copyButton.addEventListener('click', () => {
     if (!outputCode.value) {
         alert('先に変換を実行してください。');
