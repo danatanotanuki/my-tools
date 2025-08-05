@@ -63,8 +63,6 @@ convertButton.addEventListener('click', () => {
     // 4. 整形したコードを出力エリアに表示
     outputCode.value = `// --- ここから下をコピーして dataStore に貼り付け ---
 ${generatedCode.join('')}`;
-    // 最後のカンマを削除する処理をシンプルにしました
-    outputCode.value = outputCode.value.trim().slice(0, -1);
 });
 
 
