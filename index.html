@@ -2,17 +2,131 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>便利ツール集</title>
+    <style>
+        /* Google Fontsからフォントをインポート */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=swap');
+
+        :root {
+            --bg-color: #121212; /* 背景色 */
+            --card-bg-color: #1E1E1E; /* カードの背景色 */
+            --text-color: #E0E0E0; /* 基本の文字色 */
+            --primary-text-color: #FFFFFF; /* メインの文字色 */
+            --accent-color: #DAA520; /* アクセントの黄色 (GoldenRod) */
+            --accent-glow-color: rgba(218, 165, 32, 0.6); /* 光るエフェクトの色 */
+            --border-color: #333333; /* 枠線の色 */
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Noto Sans JP', sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: var(--primary-text-color);
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px var(--accent-glow-color); /* タイトルにも少し光彩効果 */
+        }
+
+        .header p {
+            font-size: 1.1em;
+        }
+
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* レスポンシブ対応 */
+            gap: 30px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .tool-card {
+            background-color: var(--card-bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 20px var(--accent-glow-color); /* ホバー時に光る効果 */
+        }
+
+        .card-content {
+            padding: 25px 30px;
+        }
+
+        .card-content h2 {
+            font-size: 1.5em;
+            color: var(--primary-text-color);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .card-content p {
+            font-size: 1em;
+            line-height: 1.6;
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
-    <h1>便利ツール集</h1>
-    <p>ツールを選択してください。</p>
-    <nav>
-        <ul>
-            <li><a href="./moji-counter/">文字数カウンター</a></li>
-            <li><a href="./title-pick/index.html">クイックコピー・ツール</a></li>
-            <li><a href="./RSS/index.html">RSS整形ツール</a></li>
-        </ul>
-    </nav>
+
+    <header class="header">
+        <h1>便利ツール集</h1>
+        <p>ツールを選択してください。</p>
+    </header>
+
+    <main class="tool-grid">
+        <a href="./moji-counter/" class="tool-card">
+            <div class="card-content">
+                <h2>文字数カウンター</h2>
+                <p>テキストの文字数をリアルタイムでカウントします。</p>
+            </div>
+        </a>
+
+        <a href="./title-pick/index.html" class="tool-card">
+            <div class="card-content">
+                <h2>クイックコピー・ツール</h2>
+                <p>定型文などを素早くコピーするためのツールです。</p>
+            </div>
+        </a>
+
+        <a href="./RSS/index.html" class="tool-card">
+            <div class="card-content">
+                <h2>RSS整形ツール</h2>
+                <p>RSSフィードを読みやすく整形・表示します。</p>
+            </div>
+        </a>
+
+        <!-- 新しいツールを追加する場合は、ここに a タグをコピーして追加してください -->
+        <!--
+        <a href="[ツールのURL]" class="tool-card">
+            <div class="card-content">
+                <h2>[ツールの名前]</h2>
+                <p>[ツールの簡単な説明]</p>
+            </div>
+        </a>
+        -->
+    </main>
+
 </body>
 </html>
