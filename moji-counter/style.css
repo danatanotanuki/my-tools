@@ -1,52 +1,119 @@
-body {
-    font-family: sans-serif;
-    max-width: 600px;
-    margin: 2rem auto;
-    padding: 1rem;
-    background-color: #f4f4f4;
-}
-h1 {
-    text-align: center;
-    color: #333;
-}
-textarea {
-    width: 100%;
-    height: 200px;
-    padding: 10px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-}
-.controls {
-    text-align: center;
-    margin: 1rem 0;
-}
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-}
-button:hover {
-    background-color: #0056b3;
-}
-p {
-    font-size: 18px;
-    font-weight: bold;
-}
-#results {
-    border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 5px;
-    background-color: #fff;
-}
-#clear-button {
-    background-color: #dc3545;
-}
-#clear-button:hover {
-    background-color: #c82333;
-}
+<style>
+    /* Google Fontsからフォントをインポート */
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=swap');
+
+    /* --- カラーパレット --- */
+    :root {
+        --bg-color: #121212; /* 背景色 */
+        --card-bg-color: #1E1E1E; /* カードや入力欄の背景色 */
+        --border-color: #333333; /* 枠線の色 */
+        --text-color: #fffacd; /* 基本の文字色 (LemonChiffon) */
+        --primary-text-color: #ffd700; /* メインの文字色 (Gold) */
+        --accent-color: #DAA520; /* アクセントの黄色 (GoldenRod) */
+        --accent-glow-color: rgba(218, 165, 32, 0.6); /* 光るエフェクトの色 */
+        --danger-color: #a94442; /* 削除ボタンなどの色 */
+        --danger-glow-color: rgba(169, 68, 66, 0.5);
+    }
+
+    /* --- 基本設定 --- */
+    body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: 'Noto Sans JP', sans-serif;
+        max-width: 600px;
+        margin: 2rem auto;
+        padding: 1rem;
+    }
+
+    /* --- ヘッダー --- */
+    h1 {
+        text-align: center;
+        color: var(--primary-text-color);
+        text-shadow: 0 0 8px var(--accent-glow-color);
+    }
+
+    /* --- テキストエリア --- */
+    textarea {
+        width: 100%;
+        height: 200px;
+        padding: 15px;
+        box-sizing: border-box;
+        background-color: var(--card-bg-color);
+        color: var(--text-color);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        font-size: 16px;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    textarea:focus {
+        outline: none;
+        border-color: var(--accent-color);
+        box-shadow: 0 0 15px var(--accent-glow-color);
+    }
+
+    /* --- 操作ボタンエリア --- */
+    .controls {
+        text-align: center;
+        margin: 1.5rem 0;
+        display: flex;
+        justify-content: center;
+        gap: 15px; /* ボタン間のスペース */
+    }
+
+    /* --- ボタン共通スタイル --- */
+    button {
+        padding: 12px 25px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        border: none;
+        border-radius: 8px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    /* --- プライマリボタン --- */
+    button:not(#clear-button) {
+        background-color: var(--accent-color);
+        color: var(--bg-color);
+    }
+
+    button:not(#clear-button):hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px var(--accent-glow-color);
+    }
+
+    /* --- クリアボタン --- */
+    /* 削除・クリアは危険な操作なので、テーマに合わせつつも異なる色で表現 */
+    #clear-button {
+        background-color: transparent;
+        border: 2px solid var(--danger-color);
+        color: var(--danger-color);
+    }
+
+    #clear-button:hover {
+        background-color: var(--danger-glow-color);
+        color: #fff;
+        border-color: var(--danger-color);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px var(--danger-glow-color);
+    }
+    
+    /* --- 結果表示エリア --- */
+    #results {
+        background-color: var(--card-bg-color);
+        border: 1px solid var(--border-color);
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 2rem;
+    }
+
+    #results p {
+        font-size: 18px;
+        font-weight: bold;
+        color: var(--primary-text-color); /* 結果は重要な情報なので目立たせる */
+        text-align: center;
+        margin: 0;
+    }
+
+</style>
