@@ -1,92 +1,133 @@
-body {
-    font-family: sans-serif;
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 1rem;
-    background-color: #f9f9f9;
-}
+    /* Google Fontsからフォントをインポート */
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=swap');
 
-h1 {
-    text-align: center;
-    color: #333;
-}
+    /* --- カラーパレット --- */
+    :root {
+        --bg-color: #121212; /* 背景色 */
+        --card-bg-color: #1E1E1E; /* カードや入力欄の背景色 */
+        --border-color: #333333; /* 枠線の色 */
+        --text-color: #fffacd; /* 基本の文字色 (LemonChiffon) */
+        --primary-text-color: #ffd700; /* メインの文字色 (Gold) */
+        --accent-color: #DAA520; /* アクセントの黄色 (GoldenRod) */
+        --accent-glow-color: rgba(218, 165, 32, 0.6); /* 光るエフェクトの色 */
+    }
 
-.search-container {
-    margin-bottom: 20px;
-}
+    /* --- 基本設定 --- */
+    body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: 'Noto Sans JP', sans-serif;
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 1rem;
+    }
 
-#search-box {
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
+    /* --- ヘッダー --- */
+    h1 {
+        text-align: center;
+        color: var(--primary-text-color);
+        text-shadow: 0 0 8px var(--accent-glow-color);
+    }
 
-#results-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
+    /* --- 検索ボックス --- */
+    .search-container {
+        margin-bottom: 30px; /* 結果リストとの間隔を少し広げる */
+    }
 
-.result-item {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 15px;
-    margin-bottom: 10px;
-    display: flex;
-    flex-wrap: wrap; /* スマホ表示などで折り返す */
-    align-items: center;
-    gap: 10px;
-}
+    #search-box {
+        width: 100%;
+        padding: 15px;
+        font-size: 16px;
+        box-sizing: border-box;
+        background-color: var(--card-bg-color);
+        color: var(--text-color);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
 
-.item-content {
-    flex-grow: 1; /* 残りのスペースを埋める */
-}
+    #search-box:focus {
+        outline: none;
+        border-color: var(--accent-color);
+        box-shadow: 0 0 15px var(--accent-glow-color);
+    }
 
-.item-content p {
-    margin: 0 0 5px 0;
-    word-break: break-all; /* URLがはみ出ないように */
-}
+    /* --- 結果リスト --- */
+    #results-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
 
-.item-content .label {
-    font-weight: bold;
-    color: #555;
-}
+    .result-item {
+        background-color: var(--card-bg-color);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 15px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 15px;
+        transition: border-color 0.3s ease;
+    }
 
-.copy-button {
-    padding: 8px 12px;
-    font-size: 14px;
-    cursor: pointer;
-    border: 1px solid #007bff;
-    background-color: #fff;
-    color: #007bff;
-    border-radius: 5px;
-    white-space: nowrap; /* ボタンテキストを改行させない */
-}
+    .result-item:hover {
+        border-color: var(--accent-color); /* カーソルを合わせると枠線が光る */
+    }
 
-.copy-button:hover {
-    background-color: #007bff;
-    color: #fff;
-}
+    .item-content {
+        flex-grow: 1;
+        min-width: 200px; /* 幅が狭い時にボタンが下に落ちやすくする */
+    }
 
-/* コピー成功時のフィードバック用スタイル */
-#feedback {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #28a745;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    z-index: 1000;
-    transition: opacity 0.5s, visibility 0.5s;
-}
+    .item-content p {
+        margin: 0 0 8px 0;
+        word-break: break-all;
+    }
 
-.feedback-hidden {
-    opacity: 0;
-    visibility: hidden;
-}
+    .item-content .label {
+        font-weight: bold;
+        color: var(--primary-text-color); /* ラベルを目立たせる */
+    }
+
+    /* --- コピーボタン --- */
+    .copy-button {
+        padding: 8px 16px;
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+        border: 2px solid var(--accent-color);
+        background-color: transparent;
+        color: var(--accent-color);
+        border-radius: 8px;
+        white-space: nowrap;
+        transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    }
+
+    .copy-button:hover {
+        background-color: var(--accent-color);
+        color: var(--bg-color);
+        transform: scale(1.05); /* 少し拡大するアニメーション */
+    }
+
+    /* --- コピー成功時のフィードバック --- */
+    #feedback {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: var(--accent-color); /* テーマカラーに統一 */
+        color: var(--bg-color);
+        padding: 12px 25px;
+        border-radius: 8px;
+        z-index: 1000;
+        transition: opacity 0.5s, visibility 0.5s;
+        font-weight: bold;
+        box-shadow: 0 5px 15px var(--accent-glow-color);
+    }
+
+    .feedback-hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
