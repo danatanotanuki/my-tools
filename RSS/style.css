@@ -1,58 +1,130 @@
-body {
-    font-family: sans-serif;
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 1rem;
-}
-h1, h2 { color: #333; }
-p { color: #555; }
+<style>
+    /* Google Fontsからフォントをインポート */
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=swap');
 
-.container {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-}
+    /* --- カラーパレット --- */
+    :root {
+        --bg-color: #121212; /* 背景色 */
+        --card-bg-color: #1E1E1E; /* カードや入力欄の背景色 */
+        --border-color: #333333; /* 枠線の色 */
+        --text-color: #fffacd; /* 基本の文字色 (LemonChiffon) */
+        --primary-text-color: #ffd700; /* メインの文字色 (Gold) */
+        --accent-color: #DAA520; /* アクセントの黄色 (GoldenRod) */
+        --accent-glow-color: rgba(218, 165, 32, 0.6); /* 光るエフェクトの色 */
+    }
 
-.area {
-    flex: 1; /* 幅を均等に分ける */
-    display: flex;
-    flex-direction: column;
-}
+    /* --- 基本設定 --- */
+    body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: 'Noto Sans JP', sans-serif;
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 1rem;
+    }
 
-textarea {
-    width: 100%;
-    height: 400px;
-    padding: 10px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-family: monospace; /* 等幅フォントの方が見やすい */
-    font-size: 14px;
-}
+    /* --- ヘッダーとテキスト --- */
+    h1, h2 {
+        color: var(--primary-text-color);
+        text-shadow: 0 0 8px var(--accent-glow-color); /* 見出しに光彩効果 */
+    }
 
-#output-code {
-    background-color: #f4f4f4;
-}
+    p {
+        color: var(--text-color);
+        line-height: 1.7;
+    }
 
-.controls {
-    display: flex;
-    align-items: center;
-    height: 400px; /* テキストエリアの高さに合わせる */
-}
+    /* --- レイアウト --- */
+    .container {
+        display: flex;
+        flex-wrap: wrap; /* 画面が狭い時に折り返す */
+        gap: 20px;
+        align-items: flex-start;
+    }
 
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    margin-top: 10px;
-}
-button:hover { background-color: #0056b3; }
-#copy-button { background-color: #28a745; }
-#copy-button:hover { background-color: #218838; }
+    .area {
+        flex: 1;
+        min-width: 300px; /* 最小幅を指定 */
+        display: flex;
+        flex-direction: column;
+    }
 
-hr { margin: 2rem 0; }
-a { color: #007bff; }
+    /* --- テキストエリア --- */
+    textarea {
+        width: 100%;
+        height: 400px;
+        padding: 15px;
+        box-sizing: border-box;
+        background-color: var(--card-bg-color);
+        color: var(--text-color);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        font-family: monospace;
+        font-size: 14px;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    textarea:focus {
+        outline: none;
+        border-color: var(--accent-color);
+        box-shadow: 0 0 15px var(--accent-glow-color);
+    }
+
+    /* 出力用のテキストエリア */
+    #output-code {
+        background-color: #1A1A1A; /* 少し色を変える場合 */
+    }
+
+    /* --- 操作ボタンエリア --- */
+    .controls {
+        display: flex;
+        align-items: center;
+        justify-content: center; /* 中央に配置 */
+        height: 400px;
+    }
+
+    /* --- ボタン --- */
+    button {
+        padding: 12px 25px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        background-color: var(--accent-color);
+        color: var(--bg-color); /* 背景色と同じにして文字を際立たせる */
+        border: none;
+        border-radius: 8px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px var(--accent-glow-color);
+    }
+    
+    /* コピーボタンも同じスタイルを適用 */
+    #copy-button {
+        background-color: var(--accent-color);
+    }
+    #copy-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px var(--accent-glow-color);
+    }
+
+    /* --- その他 --- */
+    hr {
+        border: 0;
+        border-top: 1px solid var(--border-color);
+        margin: 2rem 0;
+    }
+
+    a {
+        color: var(--accent-color);
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    a:hover {
+        color: var(--primary-text-color);
+        text-decoration: underline;
+    }
+
+</style>
