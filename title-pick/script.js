@@ -7,9 +7,79 @@ const dataStore = [
      
     {
         id: 4,
-        title: "不害無い",
+        title: "さよなら、私の仮眠",
         description: "",
-        text: "### 🔻不害無い｜【狸の短編小説】",
+        text: "### 🔻さよなら、私の仮眠｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/nbcbe5db6c5fb"
+    },
+    {
+        id: 5,
+        title: "あいの会話",
+        description: "",
+        text: "### 🔻あいの会話｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/n7f1794f524ce"
+    },
+    {
+        id: 6,
+        title: "きっと、あなたの好きが見つかる場所、共同運営マガジン『エン狸』より【メンバーさんの記事のご紹介】",
+        description: "",
+        text: "### 🔻きっと、あなたの好きが見つかる場所、共同運営マガジン『エン狸』より【メンバーさんの記事のご紹介】｜【狸の話】",
+        url: "https://note.com/danatanotanuki/n/nffd85d8ef633"
+    },
+    {
+        id: 7,
+        title: "バッテリーの劣化",
+        description: "",
+        text: "### 🔻バッテリーの劣化｜【狸の話】",
+        url: "https://note.com/danatanotanuki/n/ndbddb27b67ed"
+    },
+    {
+        id: 8,
+        title: "それにあいを込めて",
+        description: "",
+        text: "### 🔻それにあいを込めて｜【狸のあいとは何か】",
+        url: "https://note.com/danatanotanuki/n/n7105b11e07ac"
+    },
+    {
+        id: 9,
+        title: "今日の気持ち",
+        description: "",
+        text: "### 🔻今日の気持ち｜【狸の話】",
+        url: "https://note.com/danatanotanuki/n/n125c86eb13fc"
+    },
+    {
+        id: 10,
+        title: "コウモリがやってきた",
+        description: "",
+        text: "### 🔻コウモリがやってきた｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/ndc38673e4f36"
+    },
+    {
+        id: 11,
+        title: "特異点",
+        description: "",
+        text: "### 🔻特異点｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/n95e79ef7992d"
+    },
+    {
+        id: 12,
+        title: "幽霊だったかもしれない",
+        description: "",
+        text: "### 🔻幽霊だったかもしれない｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/nb86d895c2b33"
+    },
+    {
+        id: 13,
+        title: "不害無い@母",
+        description: "",
+        text: "### 🔻不害無い@母｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/ne0e59ed736c8"
+    },
+    {
+        id: 4,
+        title: "不害無い@息子",
+        description: "",
+        text: "### 🔻不害無い@息子｜【狸の短編小説】",
         url: "https://note.com/danatanotanuki/n/n0eb96d5a3808"
     },
     {
