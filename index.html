@@ -7,7 +7,6 @@
     <style>
         /* Google Fontsからフォントをインポート */
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=swap');
-
         :root {
             --bg-color: #121212; /* 背景色 */
             --card-bg-color: #1E1E1E; /* カードの背景色 */
@@ -16,43 +15,184 @@
             --accent-color: #DAA520; /* アクセントの黄色 (GoldenRod) */
             --accent-glow-color: rgba(218, 165, 32, 0.6); /* 光るエフェクトの色 */
             --border-color: #333333; /* 枠線の色 */
+            --sidebar-width: 280px; /* サイドバーの幅 */
         }
-
+        
+        * {
+            box-sizing: border-box;
+        }
+        
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
             font-family: 'Noto Sans JP', sans-serif;
             margin: 0;
+            padding: 0;
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        /* サイドバー */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: var(--sidebar-width);
+            background-color: var(--card-bg-color);
+            border-right: 1px solid var(--border-color);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .sidebar.open {
+            transform: translateX(0);
+        }
+        
+        .sidebar-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .sidebar-header h2 {
+            margin: 0;
+            color: var(--primary-text-color);
+            font-size: 1.3em;
+        }
+        
+        .sidebar-nav {
+            padding: 20px 0;
+        }
+        
+        .sidebar-link {
+            display: block;
+            padding: 15px 20px;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease, padding-left 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+        
+        .sidebar-link:hover {
+            background-color: rgba(218, 165, 32, 0.2);
+            color: var(--primary-text-color);
+            border-left-color: var(--accent-color);
+            padding-left: 30px;
+        }
+        
+        .sidebar-link h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.1em;
+            font-weight: 400;
+        }
+        
+        .sidebar-link p {
+            margin: 0;
+            font-size: 0.85em;
+            opacity: 0.8;
+        }
+        
+        /* ハンバーガーメニューボタン */
+        .menu-toggle {
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--card-bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        
+        .menu-toggle:hover {
+            background-color: rgba(218, 165, 32, 0.2);
+            border-color: var(--accent-color);
+        }
+        
+        .menu-toggle span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background-color: var(--primary-text-color);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        
+        .menu-toggle.open span:nth-child(1) {
+            transform: translateY(6px) rotate(45deg);
+        }
+        
+        .menu-toggle.open span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .menu-toggle.open span:nth-child(3) {
+            transform: translateY(-6px) rotate(-45deg);
+        }
+        
+        /* オーバーレイ */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 999;
+        }
+        
+        .overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* メインコンテンツ */
+        .main-container {
+            flex: 1;
             padding: 40px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 100%;
         }
-
+        
         .header {
             text-align: center;
             margin-bottom: 40px;
+            margin-top: 40px;
         }
-
+        
         .header h1 {
             font-size: 2.5em;
             color: var(--primary-text-color);
             margin-bottom: 10px;
-            text-shadow: 0 0 10px var(--accent-glow-color); /* タイトルにも少し光彩効果 */
+            text-shadow: 0 0 10px var(--accent-glow-color);
         }
-
+        
         .header p {
             font-size: 1.1em;
         }
-
+        
         .tool-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* レスポンシブ対応 */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             width: 100%;
             max-width: 1000px;
         }
-
+        
         .tool-card {
             background-color: var(--card-bg-color);
             border: 1px solid var(--border-color);
@@ -63,69 +203,162 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
-
+        
         .tool-card:hover {
             transform: translateY(-8px);
             border-color: var(--accent-color);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 20px var(--accent-glow-color); /* ホバー時に光る効果 */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 20px var(--accent-glow-color);
         }
-
+        
         .card-content {
             padding: 25px 30px;
         }
-
+        
         .card-content h2 {
             font-size: 1.5em;
             color: var(--primary-text-color);
             margin-top: 0;
             margin-bottom: 10px;
         }
-
+        
         .card-content p {
             font-size: 1em;
             line-height: 1.6;
             margin: 0;
         }
+        
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 260px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .tool-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
-
-    <header class="header">
-        <h1>便利ツール集</h1>
-    </header>
-
-    <main class="tool-grid">
-        <a href="./moji-counter/" class="tool-card">
-            <div class="card-content">
-                <h2>文字数カウンター</h2>
-                <p>テキストの文字数をリアルタイムでカウントします。</p>
-            </div>
-        </a>
-
-        <a href="./title-pick/index.html" class="tool-card">
-            <div class="card-content">
-                <h2>クイックコピー</h2>
-                <p>定型文などを素早くコピーするためのツールです。</p>
-            </div>
-        </a>
-
-        <a href="./RSS/index.html" class="tool-card">
-            <div class="card-content">
-                <h2>RSS整形</h2>
-                <p>RSSフィードを読みやすく整形・表示します。</p>
-            </div>
-        </a>
-
-        <!-- 新しいツールを追加する場合は、ここに a タグをコピーして追加してください -->
-        <!--
-        <a href="[ツールのURL]" class="tool-card">
-            <div class="card-content">
-                <h2>[ツールの名前]</h2>
-                <p>[ツールの簡単な説明]</p>
-            </div>
-        </a>
-        -->
-    </main>
-
+    <!-- ハンバーガーメニューボタン -->
+    <button class="menu-toggle" id="menuToggle" aria-label="メニューを開く">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    
+    <!-- オーバーレイ -->
+    <div class="overlay" id="overlay"></div>
+    
+    <!-- サイドバー -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>ツール一覧</h2>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="./moji-counter/" class="sidebar-link">
+                <h3>文字数カウンター</h3>
+                <p>テキストの文字数をカウント</p>
+            </a>
+            <a href="./title-pick/index.html" class="sidebar-link">
+                <h3>クイックコピー</h3>
+                <p>定型文を素早くコピー</p>
+            </a>
+            <a href="./RSS/index.html" class="sidebar-link">
+                <h3>RSS整形</h3>
+                <p>RSSフィードを整形・表示</p>
+            </a>
+        </nav>
+    </aside>
+    
+    <!-- メインコンテンツ -->
+    <div class="main-container">
+        <header class="header">
+            <h1>便利ツール集</h1>
+        </header>
+        <main class="tool-grid">
+            <a href="./moji-counter/" class="tool-card">
+                <div class="card-content">
+                    <h2>文字数カウンター</h2>
+                    <p>テキストの文字数をリアルタイムでカウントします。</p>
+                </div>
+            </a>
+            <a href="./title-pick/index.html" class="tool-card">
+                <div class="card-content">
+                    <h2>クイックコピー</h2>
+                    <p>定型文などを素早くコピーするためのツールです。</p>
+                </div>
+            </a>
+            <a href="./RSS/index.html" class="tool-card">
+                <div class="card-content">
+                    <h2>RSS整形</h2>
+                    <p>RSSフィードを読みやすく整形・表示します。</p>
+                </div>
+            </a>
+            <!-- 新しいツールを追加する場合は、ここに a タグをコピーして追加してください -->
+            <!--
+            <a href="[ツールのURL]" class="tool-card">
+                <div class="card-content">
+                    <h2>[ツールの名前]</h2>
+                    <p>[ツールの簡単な説明]</p>
+                </div>
+            </a>
+            -->
+        </main>
+    </div>
+    
+    <script>
+        // サイドバーの開閉制御
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        let isOpen = false;
+        
+        function toggleSidebar() {
+            isOpen = !isOpen;
+            
+            if (isOpen) {
+                sidebar.classList.add('open');
+                menuToggle.classList.add('open');
+                overlay.classList.add('show');
+                menuToggle.setAttribute('aria-label', 'メニューを閉じる');
+            } else {
+                sidebar.classList.remove('open');
+                menuToggle.classList.remove('open');
+                overlay.classList.remove('show');
+                menuToggle.setAttribute('aria-label', 'メニューを開く');
+            }
+        }
+        
+        // ハンバーガーメニューボタンのクリックイベント
+        menuToggle.addEventListener('click', toggleSidebar);
+        
+        // オーバーレイのクリックでサイドバーを閉じる
+        overlay.addEventListener('click', function() {
+            if (isOpen) {
+                toggleSidebar();
+            }
+        });
+        
+        // ESCキーでサイドバーを閉じる
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && isOpen) {
+                toggleSidebar();
+            }
+        });
+        
+        // サイドバー内のリンクをクリックしたときにサイドバーを閉じる（オプション）
+        const sidebarLinks = document.querySelectorAll('.sidebar-link');
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                // 必要に応じて、リンククリック時にサイドバーを閉じる
+                // toggleSidebar();
+            });
+        });
+    </script>
 </body>
 </html>
