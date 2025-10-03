@@ -2,7 +2,134 @@
 // まずはここに直接データを書きます。これが簡易的なデータベースです。
 // 必要に応じてこの配列にオブジェクトを追加・編集してください。
 const dataStore = [
-     
+
+
+    {
+        id: 4,
+        title: "死刑囚",
+        description: "",
+        text: "### 🔻死刑囚｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/n71bb62530c1f"
+    },
+    {
+        id: 5,
+        title: "無駄を体現する者",
+        description: "",
+        text: "### 🔻無駄を体現する者｜【狸の話】",
+        url: "https://note.com/danatanotanuki/n/n9d328432b3f5"
+    },
+    {
+        id: 6,
+        title: "旅をしたい",
+        description: "",
+        text: "### 🔻旅をしたい｜【狸の話】",
+        url: "https://note.com/danatanotanuki/n/nf8e00cae38e2"
+    },
+    {
+        id: 7,
+        title: "紫の聴者",
+        description: "",
+        text: "### 🔻紫の聴者｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/n6f156d07db66"
+    },
+    {
+        id: 8,
+        title: "依存の養殖",
+        description: "",
+        text: "### 🔻依存の養殖｜【狸の話】",
+        url: "https://note.com/danatanotanuki/n/na4919b2e6866"
+    },
+    {
+        id: 9,
+        title: "メガネをつけない老人",
+        description: "",
+        text: "### 🔻メガネをつけない老人｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/n6fcf2d033d0d"
+    },
+    {
+        id: 10,
+        title: "猫はなかない",
+        description: "",
+        text: "### 🔻猫はなかない｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/n6e07f3705a03"
+    },
+    {
+        id: 11,
+        title: "昨日には戻れない",
+        description: "",
+        text: "### 🔻昨日には戻れない｜【狸の話】",
+        url: "https://note.com/danatanotanuki/n/n6b34e3d3a867"
+    },
+    {
+        id: 12,
+        title: "弱さの共喰い",
+        description: "",
+        text: "### 🔻弱さの共喰い｜【狸の話】",
+        url: "https://note.com/danatanotanuki/n/n965881ec7bca"
+    },
+    {
+        id: 13,
+        title: "全てのものに感謝を捧げて",
+        description: "",
+        text: "### 🔻全てのものに感謝を捧げて｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/nc3d535e3a5ac"
+    },
+    {
+        id: 14,
+        title: "神々の演劇",
+        description: "",
+        text: "### 🔻神々の演劇｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/n771e799de660"
+    },
+    {
+        id: 15,
+        title: "地域公共交通維持運行路線",
+        description: "",
+        text: "### 🔻地域公共交通維持運行路線｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/n735cde177a94"
+    },
+    {
+        id: 16,
+        title: "見出し画像に拘り始める",
+        description: "",
+        text: "### 🔻見出し画像に拘り始める｜【狸の話】",
+        url: "https://note.com/danatanotanuki/n/nc4e16e4f9663"
+    },
+    {
+        id: 17,
+        title: "境界はすぐそこに",
+        description: "",
+        text: "### 🔻境界はすぐそこに｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/n637ecf075347"
+    },
+    {
+        id: 18,
+        title: "猫の幸福",
+        description: "",
+        text: "### 🔻猫の幸福｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/n4a8e78eecd3e"
+    },
+    {
+        id: 19,
+        title: "カラメルは夜に燃える",
+        description: "",
+        text: "### 🔻カラメルは夜に燃える｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/n6303ae2596fe"
+    },
+    {
+        id: 20,
+        title: "寄生虫",
+        description: "",
+        text: "### 🔻寄生虫｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/n18d106d1e248"
+    },
+    {
+        id: 21,
+        title: "拭えない入れ墨",
+        description: "",
+        text: "### 🔻拭えない入れ墨｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/na0bda75ec1b7"
+    },
     {
         id: 4,
         title: "さよなら、私の仮眠",
