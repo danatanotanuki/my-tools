@@ -6,6 +6,41 @@ const dataStore = [
 
     {
         id: 4,
+        title: "鏡合わせの共犯者",
+        description: "",
+        text: "### 🔻鏡合わせの共犯者｜【狸の話】",
+        url: "https://note.com/danatanotanuki/n/n81d42b59df20"
+    },
+    {
+        id: 5,
+        title: "私はそこにいなかった",
+        description: "",
+        text: "### 🔻私はそこにいなかった｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/nb4d0420af433"
+    },
+    {
+        id: 6,
+        title: "苦しみとの距離感",
+        description: "",
+        text: "### 🔻苦しみとの距離感｜【狸の話】",
+        url: "https://note.com/danatanotanuki/n/n178dfabf7d39"
+    },
+    {
+        id: 7,
+        title: "無関心の鎧",
+        description: "",
+        text: "### 🔻無関心の鎧｜【狸の話】",
+        url: "https://note.com/danatanotanuki/n/nab3ed5493299"
+    },
+    {
+        id: 8,
+        title: "内なる自分は敵となる",
+        description: "",
+        text: "### 🔻内なる自分は敵となる｜【狸の話】",
+        url: "https://note.com/danatanotanuki/n/nf37cf0820143"
+    },
+    {
+        id: 4,
         title: "死刑囚",
         description: "",
         text: "### 🔻死刑囚｜【狸の短編小説】",
