@@ -3,6 +3,83 @@
 // 必要に応じてこの配列にオブジェクトを追加・編集してください。
 const dataStore = [
 
+    {
+        id: 4,
+        title: "私はそこにいた",
+        description: "",
+        text: "### 🔻私はそこにいた｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/n3586fcc89300"
+    },
+    {
+        id: 5,
+        title: "水平線に抗って",
+        description: "",
+        text: "### 🔻水平線に抗って｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/ne7610ce19605"
+    },
+    {
+        id: 6,
+        title: "森の背骨",
+        description: "",
+        text: "### 🔻森の背骨｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/n9092f167ddbe"
+    },
+    {
+        id: 7,
+        title: "誰かの窪み",
+        description: "",
+        text: "### 🔻誰かの窪み｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/n1cf0578ddb19"
+    },
+    {
+        id: 8,
+        title: "何も無くて、ごめんね",
+        description: "",
+        text: "### 🔻何も無くて、ごめんね｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/n13ef373babef"
+    },
+    {
+        id: 9,
+        title: "意味の墓場",
+        description: "",
+        text: "### 🔻意味の墓場｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/n874700dfd6c9"
+    },
+    {
+        id: 10,
+        title: "人間だったもの",
+        description: "",
+        text: "### 🔻人間だったもの｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/n58e195304a79"
+    },
+    {
+        id: 11,
+        title: "本当の自分にさよなら",
+        description: "",
+        text: "### 🔻本当の自分にさよなら｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/n0b489657f85a"
+    },
+    {
+        id: 12,
+        title: "次を待つ箱",
+        description: "",
+        text: "### 🔻次を待つ箱｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/n195439cd5f25"
+    },
+    {
+        id: 13,
+        title: "張り付いた空洞",
+        description: "",
+        text: "### 🔻張り付いた空洞｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/n53820ea93c69"
+    },
+    {
+        id: 14,
+        title: "スポットライトの影で",
+        description: "",
+        text: "### 🔻スポットライトの影で｜【狸の話】",
+        url: "https://note.com/danatanotanuki/n/n89cccef9a4fc"
+    },
 
     {
         id: 4,
