@@ -2,7 +2,105 @@
 // まずはここに直接データを書きます。これが簡易的なデータベースです。
 // 必要に応じてこの配列にオブジェクトを追加・編集してください。
 const dataStore = [
-
+    
+    {
+        id: 4,
+        title: "ダブル・ダブル",
+        description: "",
+        text: "### 🔻ダブル・ダブル｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/nbb5ebb768298"
+    },
+    {
+        id: 5,
+        title: "雪原を汚して",
+        description: "",
+        text: "### 🔻雪原を汚して｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/n313ab32a362e"
+    },
+    {
+        id: 6,
+        title: "器は何も語らない",
+        description: "",
+        text: "### 🔻器は何も語らない｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/n86ed34cd9e5d"
+    },
+    {
+        id: 7,
+        title: "量れないもの",
+        description: "",
+        text: "### 🔻量れないもの｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/nf7cf3c93ee3a"
+    },
+    {
+        id: 8,
+        title: "ぜんまい仕掛けの約束",
+        description: "",
+        text: "### 🔻ぜんまい仕掛けの約束｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/n0dd24508a77b"
+    },
+    {
+        id: 9,
+        title: "喉に棲むもの",
+        description: "",
+        text: "### 🔻喉に棲むもの｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/n00ee7b02e66b"
+    },
+    {
+        id: 10,
+        title: "背骨と灰",
+        description: "",
+        text: "### 🔻背骨と灰｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/n5e764ea73225"
+    },
+    {
+        id: 11,
+        title: "偽貌画",
+        description: "",
+        text: "### 🔻偽貌画｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/n5e43c4d1cf9d"
+    },
+    {
+        id: 12,
+        title: "微笑みの定位置",
+        description: "",
+        text: "### 🔻微笑みの定位置｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/n703263d1e96c"
+    },
+    {
+        id: 13,
+        title: "溺",
+        description: "",
+        text: "### 🔻溺｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/nb488ae8ffe7a"
+    },
+    {
+        id: 14,
+        title: "零度の共感",
+        description: "",
+        text: "### 🔻零度の共感｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/nb1c8946e0a78"
+    },
+    {
+        id: 15,
+        title: "聖なる墓荒らし",
+        description: "",
+        text: "### 🔻聖なる墓荒らし｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/n457c5f17b34e"
+    },
+    {
+        id: 16,
+        title: "虚ろの結晶",
+        description: "",
+        text: "### 🔻虚ろの結晶｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/n205cf0b5c463"
+    },
+    {
+        id: 17,
+        title: "窓骸",
+        description: "",
+        text: "### 🔻窓骸｜【狸の短編小説】",
+        url: "https://note.com/danatanotanuki/n/nd834505599a4"
+    },
     {
         id: 4,
         title: "香りの終点",
